@@ -1,0 +1,83 @@
+
+<%- include('partials/header') %> 
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-11 ">
+            <table class="table table-bordered table-sm " >
+                <thead class="table-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Usuario</th>
+                        <th>Contraseña</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>id_rol</th>
+                        <th>fechaCreacion</th>
+                        <th>usuarioCreacion</th>
+                        <th>fechaActualizacion</th>
+                        <th>usuarioActualizacion</th>
+                        <th>estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% if(data){%>
+                        <% for (var i=0; i <data.length; i++) {%>
+                            <tr>
+                                <td class="table-active"><%= (i + 1) %></td>
+                                <td><%= data[i].usuario %></td>
+                                <td><%= data[i].contraseña %></td>
+                                <td><%= data[i].mombre %></td>
+                                <td><%= data[i].apellido %></td>
+                                <td><%= data[i].id_rol %></td>
+                                <td><%= data[i].fechaCreacion %></td>
+                                <td><%= data[i].usuarioCreacion %></td>
+                                <td><%= data[i].fechaActualizacion %></td>
+                                <td><%= data[i].usuarioActualizacion %></td>
+                                <td><%= data[i].estado %></td>
+
+                                <td>
+                                    <a href="/update/<%= data[i].id%>" class="btn btn-success">Editar</a>
+                                    <a href="/delete/<%= data[i].id%>" class="btn btn-danger">Eliminar</a>
+                                    
+                                </td>
+                            </tr>
+                        <%}%>
+                    <%} %>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="post">
+                        <div class="form-group">
+                            <input type="text" name="usuario" placeholder="Usuario" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="contraseña" placeholder="Contraseña" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="mombre" placeholder="Nombre" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="apellido" placeholder="Apellido" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="int" name="id_rol" placeholder="rol ID" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="estado" placeholder="Telefono" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">
+                            Agregar Usuario
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %> 
